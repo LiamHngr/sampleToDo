@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 //const date = require(__dirname + "/date.js");
 const mongoose = require("mongoose")
 const _ = require("lodash")
+require('dotenv').config()
 
 const app = express();
 
@@ -13,8 +14,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-
-mongoose.connect("mongodb+srv://liam:DeNrom9oHFVOAyu8@cluster0.e0eewdr.mongodb.net", {useNewUrlParser:true})
+mongoose.connect(process.env.DBLocation, {useNewUrlParser:true}) 
 
 const itemsSchema = {
   name: String
